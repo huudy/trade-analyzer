@@ -46,3 +46,8 @@ $ yarn run test:e2e
 
 # test coverage
 $ yarn run test:cov
+```
+
+## Swagger Interface
+To access the Swagger interface for API documentation and testing, navigate to:
+```http://localhost:3000/api```
