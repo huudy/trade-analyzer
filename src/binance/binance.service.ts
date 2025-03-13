@@ -11,10 +11,17 @@ export class BinanceService {
     this.client = Binance();
   }
 
-  async fetchHistoryData(symbol: string, interval: CandleChartInterval_LT) {
+  async fetchHistoryData(
+    symbol: string,
+    interval: CandleChartInterval_LT,
+    startTime?: number,
+    endTime?: number,
+  ) {
     return this.client.candles({
       symbol,
       interval,
+      startTime,
+      endTime,
     });
   }
 }
