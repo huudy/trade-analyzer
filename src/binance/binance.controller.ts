@@ -10,7 +10,7 @@ import { BinanceService } from './binance.service';
 import {
   ApiIntervalQuery,
   ValidateInterval,
-} from 'src/decorators/validate-interval.decorator';
+} from '../decorators/validate-interval.decorator';
 import { CandleChartInterval_LT } from 'binance-api-node';
 
 @ApiTags('Binance API')
@@ -21,7 +21,7 @@ export class BinanceController {
   @Get('historical-data')
   @ApiIntervalQuery()
   @ApiOperation({
-    summary: 'Fetch historical data from Binance',
+    summary: 'Analyze historical data from Binance',
     description:
       'Retrieves historical candlestick data for a specified symbol and interval.',
   })
@@ -54,20 +54,20 @@ export class BinanceController {
   })
   @ApiResponse({
     status: 200,
-    description: 'Returns historical data',
+    description: 'Returns analyzed historical data',
     type: 'array',
     isArray: true,
   })
   @ApiBadRequestResponse({
     description: 'Invalid query parameters or interval',
   })
-  async fetchHistoryData(
+  async analyzeHistoryData(
     @Query('symbol') symbol: string,
     @ValidateInterval() interval: CandleChartInterval_LT,
     @Query('startTime') startTime?: number,
     @Query('endTime') endTime?: number,
   ) {
-    return this.binanceService.fetchHistoryData(
+    return this.binanceService.analyzeHistoryData(
       symbol,
       interval,
       startTime,
