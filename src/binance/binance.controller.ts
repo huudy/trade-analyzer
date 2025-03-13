@@ -12,6 +12,7 @@ import {
   ValidateInterval,
 } from '../decorators/validate-interval.decorator';
 import { CandleChartInterval_LT } from 'binance-api-node';
+import { HistoricalDataResponseDto } from 'src/dto/historical-data.response.dto';
 
 @ApiTags('Binance API')
 @Controller('binance')
@@ -55,8 +56,7 @@ export class BinanceController {
   @ApiResponse({
     status: 200,
     description: 'Returns analyzed historical data',
-    type: 'array',
-    isArray: true,
+    type: HistoricalDataResponseDto,
   })
   @ApiBadRequestResponse({
     description: 'Invalid query parameters or interval',
